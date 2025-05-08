@@ -1,0 +1,23 @@
+Main technology -> Fast API
+
+shop app/
+        ├── main.py
+        ├── models/
+        │   └── product.py, basket.py, user.py
+        ├── routes/
+        │   └── products.py, basket.py, auth.py
+        ├── services/
+        │   └── product_service.py, auth_service.py
+        ├── db/
+        │   └── base.py, session.py
+        ├── schemas/
+        │   └── product.py, basket.py, user.py
+
+
+🔵 routes/ – receive incoming HTTP requests
+🔁 forward to →
+🟢 services/ – execute business logic
+📦 use →
+🟡 db/ – for reading from / writing to the database
+📤 return →
+🟣 schemas/ – as Pydantic response models

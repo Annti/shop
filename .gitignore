@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+*.log
+*.sqlite3
+*.db
+.pytest_cache/
+.cache/
+coverage/
+htmlcov/
+
+# Environments and secrets
+.env
+.env.*
+
+# FastAPI specific (Swagger cache etc.)
+openapi.json
+
+# Jupyter
+.ipynb_checkpoints/

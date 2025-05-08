@@ -1,0 +1,70 @@
+1. Manage the products (add products, show products)
+    - add product (one at the time) - must have
+    - add product (many at ones) (bulk operation) - nice to have
+    - add product (many at ones) (bulk_istert operation ) - nice to have
+
+    - update (who will do it? admin) - must have
+    - delete (deactivate) - must have 
+    - moving data releted to the product and product to big query / tablo -> worker how often? every day
+
+    - show products (pagination / section separation)
+
+    - filetr the products (by name, by price)
+
+2. Create basket with the products (how many baskets user can have?) one
+3. Get the sum up of the product (sum of our basket)
+
+
+REST API:
+
+products
+-> we would like to keep history of the product for analitics
+-> every product has SKU
+    -/instert
+    -/instert/bulk - nice to have
+    -/instert/bulk_file - nice to have
+    -> required fields not possible add prodct without price 
+    -> for the future possible but then we need to update other endpoints like get
+
+    -/update
+    -/update/bulk  - nice to have
+    -/update/bulk_file - nice to have
+
+    -/delete
+    -/delete/bulk - nice to have
+    -/delete/bulk_file - nice to have
+
+    -/big_query_copy
+    -/big_query_copy/bulk - nice to have
+    -/big_query_copy/bulk_file - nice to have
+
+    -/get -> 15 products page
+    -/get/filter -> 15 products by name by price
+
+basket
+-> in the basket we will show the price from adding or current -> current
+-> session basket or pernament? -> pernament
+
+    -/instert
+    -/instert/bulk
+    -> max in basket 2000
+
+    -/update
+    -/update/bulk
+
+    -/delete
+    -/delete/bulk 
+
+    -/get -> all elements in the basket
+
+    -/sum
+
+auth
+-> OAuth2
+    -/singup
+    -/login
+    -/user -> loged in user data
+
+
+
+
