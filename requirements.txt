@@ -14,15 +14,72 @@
 2. Create basket with the products (how many baskets user can have?) one
 3. Get the sum up of the product (sum of our basket)
 
+wymagania niefunkcjonalne, NFR
+napkin estimates
+events per day 4
+DAU 3M
+total daily events = 4*3M = 12M
+RPS = 12/24/60/60 = ~130
+
 
 REST API:
+
+Product = {
+    "sku": string
+    "name": string
+}
+
+POST /products
+{
+  "source_file_url": string
+}
+
+POST /products
+{
+  "products": [Product] # no id
+}
+>>> {
+  "products": [Product]
+}
+
+PUT /products
+{
+  "products": [Product]
+}
+
+DELETE /products
+{
+  "products": [Product] # only sku required
+}
+
+POST /products/exports
+{
+  "type": "big_query" # no other supported
+  "from": datetime
+}
+
+GET /products?perPage=15&page=3&name=TEST
+params: {
+ perPage : 15
+ name
+ minCreatedDate
+}
+>>>{
+  "products": [Product],
+  "page": 1,
+  "perPage": 15,
+  "total": 380
+}
+
+Czy big query moze importowac dane prosto z Postgresa?
+Jak nie to przez CSV
 
 products
 -> we would like to keep history of the product for analitics
 -> every product has SKU
-    -/instert
-    -/instert/bulk - nice to have
-    -/instert/bulk_file - nice to have
+    -/insert
+    -/insert/bulk - nice to have
+    -/insert/bulk_file - nice to have
     -> required fields not possible add prodct without price 
     -> for the future possible but then we need to update other endpoints like get
 
@@ -35,8 +92,6 @@ products
     -/delete/bulk_file - nice to have
 
     -/big_query_copy
-    -/big_query_copy/bulk - nice to have
-    -/big_query_copy/bulk_file - nice to have
 
     -/get -> 15 products page
     -/get/filter -> 15 products by name by price
@@ -45,8 +100,8 @@ basket
 -> in the basket we will show the price from adding or current -> current
 -> session basket or pernament? -> pernament
 
-    -/instert
-    -/instert/bulk
+    -/insert
+    -/insert/bulk
     -> max in basket 2000
 
     -/update
