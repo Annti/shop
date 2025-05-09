@@ -22,55 +22,6 @@ total daily events = 4*3M = 12M
 RPS = 12/24/60/60 = ~130
 
 
-REST API:
-
-Product = {
-    "sku": string
-    "name": string
-}
-
-POST /products
-{
-  "source_file_url": string
-}
-
-POST /products
-{
-  "products": [Product] # no id
-}
->>> {
-  "products": [Product]
-}
-
-PUT /products
-{
-  "products": [Product]
-}
-
-DELETE /products
-{
-  "products": [Product] # only sku required
-}
-
-POST /products/exports
-{
-  "type": "big_query" # no other supported
-  "from": datetime
-}
-
-GET /products?perPage=15&page=3&name=TEST
-params: {
- perPage : 15
- name
- minCreatedDate
-}
->>>{
-  "products": [Product],
-  "page": 1,
-  "perPage": 15,
-  "total": 380
-}
-
 Czy big query moze importowac dane prosto z Postgresa?
 Jak nie to przez CSV
 

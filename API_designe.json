@@ -1,0 +1,199 @@
+REST API:
+
+Product = {
+    "sku": string
+    "name": string
+    "price_net": float .f2
+    "price_gross": float .f2
+    "description": string
+    "available": integer
+}
+
+POST /products
+Header: Authorization: Bearer <authToken>
+{
+  "products" : [Poduct]
+}
+>>>
+{
+    "products" [{Product, "code": integer}]
+    "code": integer
+}
+
+POST /products/source_file
+Header: Authorization: Bearer <authToken>
+{
+  "source_file_url": string
+}
+>>>
+{
+    "products" [{Product, "code": integer}]
+    "code": integer
+}
+
+PUT /products
+Header: Authorization: Bearer <authToken>
+{
+  "products": [Product]
+}
+>>>
+{
+    "products" [{Product, "code": integer} ]
+    "code": integer
+}
+PUT /products/source_file
+Header: Authorization: Bearer <authToken>
+{
+    "source_file_url": string
+}
+>>>
+{
+    "products" [{Product + code: integer} ]
+    "code": integer
+}
+
+DELETE /products
+Header: Authorization: Bearer <authToken>
+{
+  "products": [{"SKU": string, ....}]
+}
+>>>
+{
+    "products" [{"SKU": string, code: integer}]
+    "code": integer 
+}
+
+
+GET /products?perPage=15&page=3&name=TEST&query="SQL..."
+Header: Authorization: Bearer <authToken>
+params: {
+ "perPage" : integer,
+ "page": integer,
+ "name": string,
+ "query": string,
+}
+>>>{
+  "products": [Product],
+  "page": 1,
+  "perPage": 15,
+  "total": 380
+}
+
+
+Basket = {
+    "basket": [{Products, "quantity":integer}] 
+}
+
+POST /basket
+Header: Authorization: Bearer <authToken>
+{
+    "userId": string #optional If user_id is not provided, it will be inferred from the authToken.
+}
+>>> {
+    "code": integer
+}
+
+GET /basket{
+Header: Authorization: Bearer <authToken>
+    "userId": string #optional If user_id is not provided, it will be inferred from the authToken.
+}
+>>>
+{
+    "userId": string #optional as we have authToken
+    "basket": ["product": Product, "quantity":float.2f]
+    "sum": float.2f
+    "code": integer 
+}
+
+PUT /basket
+Header: Authorization: Bearer <authToken>
+{
+    "basket": ["SKU": string, "quantity" : integer]
+}
+>>>
+{
+    "userId": string
+    "basket": ["product": Product, "quantity":float.2f]
+    "sum": float.2f
+    "code": integer 
+}
+
+
+DELETE /basket?all=False #will delete all item in teh basket if True
+Header: Authorization: Bearer <authToken>
+{
+    "basket": [{"SKU": string, "quantity" : integer}]
+}
+>>>
+{
+    "userId": string  #optional If user_id is not provided, it will be inferred from the authToken.
+    "basket": ["product": Product, "quantity":float.2f]
+    "sum": float.2f
+    "code": integer 
+}
+
+User{
+    "userName": string
+    "userSurname": string
+    "userDateOfBirth": date
+    "userEmail": string
+    "gender": string
+    "userPassword": hashed string
+}
+
+POST /auth/signup
+{
+    "userName": string
+    "userSurname": string
+    "userEmail": string
+    "userDateOfBirth": date
+    "gender": string
+    "userPassword": hashed string
+}
+>>>{
+    "code": integer
+}
+
+POST /auth/login
+{
+    "userEmail": string
+    "userPassword": hashed string
+}
+>>>{
+    "authToken":  <JWT token string>
+    "code": integer
+
+}
+
+GET /user
+Header: Authorization: Bearer <authToken>
+{
+    "userId": string #optional If user_id is not provided, it will be inferred from the authToken.
+}
+>>>{
+    "userId": string
+    "userData": User
+    "code": integer 
+}
+
+PUT /user
+Header: Authorization: Bearer <authToken>
+{
+    "userId": string #optional If user_id is not provided, it will be inferred from the authToken.
+    "user_data": User
+}
+>>>{
+    "userId": string
+    "userData": User
+    "code": integer 
+}
+
+DELETE /user
+Header: Authorization: Bearer <authToken>
+{
+    "user_id": string  #optional If user_id is not provided, it will be inferred from the authToken.
+}
+>>>
+{
+    "code": integer
+}
