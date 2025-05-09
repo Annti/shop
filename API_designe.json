@@ -180,7 +180,7 @@ PUT /user
 Header: Authorization: Bearer <authToken>
 {
     "userId": string #optional If user_id is not provided, it will be inferred from the authToken.
-    "user_data": User
+    "userData": User
 }
 >>>{
     "userId": string
@@ -191,7 +191,7 @@ Header: Authorization: Bearer <authToken>
 DELETE /user
 Header: Authorization: Bearer <authToken>
 {
-    "user_id": string  #optional If user_id is not provided, it will be inferred from the authToken.
+    "userId": string  #optional If user_id is not provided, it will be inferred from the authToken.
 }
 >>>
 {
