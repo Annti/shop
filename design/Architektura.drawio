@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.2">
   <diagram name="Strona-1" id="-iktbq1EX0c-Yo-LxP29">
-    <mxGraphModel dx="2037" dy="1061" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1123" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -39,13 +39,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="zuKVMNii-ABouBz0B0pM-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=40;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="zuKVMNii-ABouBz0B0pM-7" target="zuKVMNii-ABouBz0B0pM-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="zuKVMNii-ABouBz0B0pM-7" value="CloudSQL (PostgreSQL)&lt;br&gt;- user data (passwords hashed)&lt;br&gt;-product data&lt;br&gt;-product history&lt;br&gt;-bascets data&lt;div&gt;-export history&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="370" y="585" width="270" height="130" as="geometry" />
         </mxCell>
         <mxCell id="zuKVMNii-ABouBz0B0pM-8" value="BigQuery" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="820" y="130" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="zuKVMNii-ABouBz0B0pM-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.851;exitY=1.006;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=27.5;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="zuKVMNii-ABouBz0B0pM-2" target="zuKVMNii-ABouBz0B0pM-7">
+        <mxCell id="zuKVMNii-ABouBz0B0pM-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=40;entryPerimeter=0;" edge="1" parent="1" source="zuKVMNii-ABouBz0B0pM-2" target="zuKVMNii-ABouBz0B0pM-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="zuKVMNii-ABouBz0B0pM-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=37.5;entryPerimeter=0;" edge="1" parent="1" target="zuKVMNii-ABouBz0B0pM-6">
@@ -70,13 +73,11 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zuKVMNii-ABouBz0B0pM-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="zuKVMNii-ABouBz0B0pM-15" target="zuKVMNii-ABouBz0B0pM-7">
+        <mxCell id="zuKVMNii-ABouBz0B0pM-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="zuKVMNii-ABouBz0B0pM-15" target="zuKVMNii-ABouBz0B0pM-7">
           <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="410" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="800" y="325" />
-              <mxPoint x="800" y="463" />
-              <mxPoint x="760" y="463" />
-              <mxPoint x="760" y="650" />
+              <mxPoint x="750" y="650" />
             </Array>
           </mxGeometry>
         </mxCell>

@@ -15,7 +15,7 @@ Header: Authorization: Bearer <authToken>
   "products" : [Poduct]
 }
 >>>
-{
+200 {
     "products" [{Product, "code": integer}]
     "code": integer
 }
@@ -81,7 +81,8 @@ params: {
 
 
 Basket = {
-    "basket": [{Products, "quantity":integer}] 
+    "userId": string # przemyslec
+    "products": [{Products, "quantity":integer}] 
 }
 
 POST /basket
@@ -108,7 +109,7 @@ Header: Authorization: Bearer <authToken>
 PUT /basket
 Header: Authorization: Bearer <authToken>
 {
-    "basket": ["SKU": string, "quantity" : integer]
+    "products": ["SKU": string, "quantity" : integer]
 }
 >>>
 {
