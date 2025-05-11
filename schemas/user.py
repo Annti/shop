@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 # === Pydantic schemas for response ===
 class Token(BaseModel):
     accessToken: str

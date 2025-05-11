@@ -16,7 +16,7 @@ Walidacja danych użytkownika:
 
 sprawdź, czy użytkownik istnieje,
 
-sprawdź, czy hasło jest poprawne (użyj hashowania SHA256).
+sprawdź, czy hasło jest poprawne
 
 Jeśli dane poprawne:
 
@@ -35,14 +35,12 @@ Sekrety JWT mogą być zapisane w zmiennych lub stałych (np. SECRET_KEY).
 
 Nie musisz tworzyć bazy danych – mockowana baza w Pythonie jako słownik wystarczy.
 
-
-fake_users_db = {
-    "user@example.com": {
-        "user_id": "abc123",
-        "email": "user@example.com",
-        "hashed_password": SHA256("password123"),  # użyj hashlib.sha256
-        "full_name": "John Doe"
-    }
+fake_user_db = {
+        "userId": "tonyabc22123123",
+        "email": "tony@gmail.com",
+        "hashedPassword": bcrypt.hash("password123"),
+        "name": "Tony",
+        "surname": "Mazurek"
 }
 
 ✅ Przykład odpowiedzi (200 OK):

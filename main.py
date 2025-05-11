@@ -1,11 +1,18 @@
-from config import settings
-from passlib.hash import bcrypt  
-from schemas.user import Token, User
-from fastapi import FastAPI, Depends, HTTPException, status
-from datetime import datetime, timedelta
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+import csv
+import re
 from copy import deepcopy
-import jwt  
+from datetime import datetime, timedelta
+from pathlib import Path
+
+import jwt
+import requests
+from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from passlib.hash import bcrypt
+
+from config import settings
+from schemas.products import ProductListResponse
+from schemas.user import Token, User
 
 # === Mock user db response ===
 fake_user_db = {
@@ -45,6 +52,74 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
     token_data = {"userId": user["userId"], "email": user["email"]}
     access_token = create_access_token(token_data, settings.JWT_EXPIRE_MINUTES)
     return Token(accessToken=access_token, tokenType="bearer")
+
+def mock_instert_data_to_db(data: dict):
+    response_p_list = {"products":[]}
+    #przygotowanie do rozszerzenia o błedy
+    status_code = "200"
+    for d in data:
+        d["status_code"]=status_code
+        response_p_list["products"].append(d)
+    return response_p_list
+
+@app.post("/products/source_file")
+def import_products_from_scource_file(source: str, response_model=ProductListResponse):
+
+    file_path = Path(source)  # lub dowolna ścieżka
+    extension = file_path.suffix      # → ".csv"
+
+    if not extension.lower().endswith(".csv"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="File must be csv"
+        )
+    
+    with open(source) as file:
+        
+        reader = csv.DictReader(file)
+        data = mock_instert_data_to_db(reader)
+
+
+    return data
+
+
+# def extract_file_id(url: str) -> str:
+#     match = re.search(r"/file/d/([a-zA-Z0-9_-]+)", url)
+#     if not match:
+#         raise ValueError("Niepoprawny link Google Drive")
+#     return match.group(1)
+
+# def convert_to_download_url(view_url: str) -> str:
+#     file_id = extract_file_id(view_url)
+#     return f"https://drive.google.com/uc?export=download&id={file_id}"
+
+# @app.post("/products/source_file")
+# def import_products_from_scource_file(source: str, response_model=Products):
+#     download_url = convert_to_download_url(source)
+#     print(download_url)
+#     downloaded_file = requests.get(download_url)
+#     downloaded_file.raise_for_status() # rzuc wyjatek jak nie udało się pobrac pliku
+
+#     cd = downloaded_file.headers.get("Content-Disposition")
+#     filename = "unknown.csv"
+#     if cd and "filename=" in cd:
+#         filename = cd.split("filename=")[-1].strip("\"'")
+#         print("Nazwa pliku:", filename)
+
+#     if not filename.lower().endswith(".csv"):
+#             raise HTTPException(
+#                 status_code=status.HTTP_400_BAD_REQUEST,
+#                 detail="File must be csv"
+#         )
+    
+#     # with open(downloaded_file) as file:
+#     #     reader = csv.DictReader(file)
+#     #     print(reader)
+#     #     # print("response", instert_data(data))
+
+#     return {}
+
+
 
 # === Endpoint chroniony tokenem ===
 # @app.get("/user", response_model=User)

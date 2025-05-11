@@ -1,0 +1,34 @@
+✍️ Zadanie 2: Import produktów z pliku
+Cel:
+Stwórz endpoint POST /products/source_file, który pobiera URL do pliku (np. CSV) i importuje dane produktów.
+
+Założenia:
+Plik znajduje się pod wskazanym URL (plik lokalny lub file://..., a docelowo HTTP).
+
+Format pliku: CSV, z kolumnami: sku,name,price_net,price_gross,description,available.
+
+Dane z pliku mają zostać sparsowane i zapisane jako lista obiektów Product.
+
+Każdy produkt ma być walidowany z użyciem Pydantic.
+
+📌 Uwagi:
+Do wczytania pliku użyj kontekst managera with open(...) as f.
+
+Możesz użyć biblioteki csv, pandas, albo ręcznego parsowania.
+
+Nie zapisuj do bazy – wystarczy, że symulujesz wczytanie i walidację.
+
+
+Dla każdego błędnego wiersza należy zapisać informację o błędzie (walidacyjnym lub strukturalnym).
+
+Rozszerzenie zadania zwróć błędy
+
+{
+  "imported": 12,
+  "failed": 3,
+  "errors": [
+    {"line": 5, "error": "Missing SKU"},
+    {"line": 9, "error": "price_net must be positive"},
+    ...
+  ]
+}
