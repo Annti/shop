@@ -21,14 +21,4 @@ Nie zapisuj do bazy – wystarczy, że symulujesz wczytanie i walidację.
 
 Dla każdego błędnego wiersza należy zapisać informację o błędzie (walidacyjnym lub strukturalnym).
 
-Rozszerzenie zadania zwróć błędy
-
-{
-  "imported": 12,
-  "failed": 3,
-  "errors": [
-    {"line": 5, "error": "Missing SKU"},
-    {"line": 9, "error": "price_net must be positive"},
-    ...
-  ]
-}
+Rozszerzenie zadania zwróć błędy.
